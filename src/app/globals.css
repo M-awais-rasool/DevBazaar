@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Glass effect styles */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Gradient text effect */
+.text-gradient {
+  background: linear-gradient(135deg, #23C660, #4ADE80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button gradient */
+.button-gradient {
+  background: linear-gradient(135deg, #23C660, #4ADE80);
+  transition: all 0.3s ease;
+}
+
+.button-gradient:hover {
+  background: linear-gradient(135deg, #1EA653, #3DCB6C);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(35, 198, 96, 0.3);
+}
+
+/* Primary color */
+:root {
+  --primary: #23C660;
+}
+
+/* Card background */
+.bg-card {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Muted text */
+.text-muted-foreground {
+  color: rgba(255, 255, 255, 0.6);
+}
