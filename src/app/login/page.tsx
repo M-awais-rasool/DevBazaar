@@ -7,6 +7,7 @@ import { Command, Eye, EyeOff, ArrowRight, User, Mail, Lock, AlertCircle } from 
 import { Button } from "@/component/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Toast } from "@/component/ui/Toast";
 
 export default function Page() {
   const [isLogin, setIsLogin] = useState(true);
@@ -49,7 +50,7 @@ export default function Page() {
             setError("Invalid email or password.");
           }
         } else {
-          router.push("/dashboard");
+          router.push("/seller");
         }
       } else {
         const response = await fetch("/api/auth/signup", {
@@ -59,19 +60,24 @@ export default function Page() {
         });
 
         const data = await response.json();
-
+        Toast({
+          title: "Sign up successful!",
+          html: `
+            <p>Please check your email to verify your account.</p>
+            <p>An email has been sent to your inbox. Click the verification link to complete the process.</p>
+          `,
+          icon: "success",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#4CAF50",
+          background: "#FFF9C4",
+          iconHtml: '<i class="fas fa-utensils"></i>',
+          customClass: {
+            icon: "swal2-icon-food",
+          },
+        });
+        setIsLogin(true); 
         if (!response.ok) {
           setError(data.message || "Something went wrong. Please try again.");
-        } else {
-          const result = await signIn("credentials", {
-            redirect: false,
-            email: formData.email,
-            password: formData.password,
-          });
-          
-          if (result?.ok) {
-            router.push("/dashboard");
-          }
         }
       }
     } catch (error) {
@@ -87,7 +93,7 @@ export default function Page() {
       <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0A0A0A] to-black" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#23C660]/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#23C660]/5 rounded-full blur-3xl animate-pulse" />
-      
+
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -114,7 +120,7 @@ export default function Page() {
             </span>
           </h1>
           <p className="text-muted-foreground text-lg">
-            {isLogin 
+            {isLogin
               ? "Sign in to access your developer toolkit store"
               : "Create your account to start building"
             }

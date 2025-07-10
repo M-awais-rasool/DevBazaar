@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectMongo from '@/lib/mongodb';
 import User from '../../models/User';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request) {
   try {
@@ -51,6 +52,7 @@ export async function POST(request) {
     let verificationTokenExpires = null;
     
     const newUser = new User({
+      _id: uuidv4(), 
       name,
       email,
       password,
