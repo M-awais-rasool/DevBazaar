@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 const LogoCarousel = () => {
   const logos = [
-    "/lovable-uploads/5830bd79-3511-41dc-af6c-8db32d91fc2c.png",
-    "/lovable-uploads/bb50362c-6879-4868-bbc9-c6e051fd8d7d.png",
-    "/lovable-uploads/1e2a48dc-059b-4919-a1ed-44685d771a32.png",
-    "/lovable-uploads/bf56a0c6-48e4-49f7-b286-8e3fda9a3385.png",
-    "/lovable-uploads/7cc724d4-3e14-4e7c-9e7a-8d613fde54d0.png",
+    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=80&q=80", 
+    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=80&q=80", 
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=80&q=80", 
+    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=80&q=80", 
+    "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=80&q=80", 
   ];
 
   const extendedLogos = [...logos, ...logos, ...logos];
@@ -28,7 +28,7 @@ const LogoCarousel = () => {
         transition={{
           opacity: { duration: 0.5 },
           x: {
-            duration: 15, // Reduced from 25 to 15 seconds
+            duration: 15,
             repeat: Infinity,
             ease: "linear",
             delay: 0.5
@@ -44,8 +44,8 @@ const LogoCarousel = () => {
           <motion.img
             key={`logo-${index}`}
             src={logo}
-            alt={`Partner logo ${index + 1}`}
-            className="h-8 object-contain"
+            alt={`Brand logo ${index + 1}`}
+            className="h-20 object-contain rounded shadow-md bg-white" 
             initial={{ opacity: 0.5 }}
             whileHover={{ 
               opacity: 1,

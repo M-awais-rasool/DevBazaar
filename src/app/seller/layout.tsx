@@ -1,6 +1,7 @@
 "use client";
 import React, { ReactNode, useEffect, useState } from 'react'
 import SideBar from "@/component/sideBar/SideBar";
+import BottomNav from "@/component/sideBar/BottomNav";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
@@ -23,6 +24,10 @@ function layout({ children }: { children: ReactNode }) {
     }
   }, [status, session, router]);
 
+  if (status === "loading" || session?.user?.role !== "seller") {
+    return null;
+  }
+
   if (!isSeller) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
@@ -41,6 +46,7 @@ function layout({ children }: { children: ReactNode }) {
       <main className="flex-1 bg-[#090909] overflow-y-auto">
         {children}
       </main>
+      <BottomNav />
     </div>
   )
 }

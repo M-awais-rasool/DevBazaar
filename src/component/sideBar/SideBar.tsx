@@ -3,6 +3,7 @@ import { BarChart2, FileText, Settings,  } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+import LogoutButton from './LogoutButton';
 
 const navItems = [
   {
@@ -25,7 +26,7 @@ const navItems = [
 function SideBar() {
   const pathname = usePathname();
   return (
-    <aside className="w-24 bg-[#0A0A0A] flex flex-col items-center py-8 relative border-r border-white/10 min-h-screen">
+    <aside className="hidden md:flex w-24 bg-[#0A0A0A] flex-col items-center py-8 relative border-r border-white/10 min-h-screen">
       <div className="mb-12 flex flex-col items-center">
         <span className="text-4xl font-bold tracking-tight flex items-center gap-2">
           <span className="inline-block w-8 h-8 bg-white rounded-full flex items-center justify-center">
@@ -45,6 +46,10 @@ function SideBar() {
           />
         ))}
       </nav>
+      <div className="mt-auto">
+        {/* Logout Button */}
+        <LogoutButton />
+      </div>
     </aside>
   );
 }

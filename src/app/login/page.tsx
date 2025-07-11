@@ -8,8 +8,10 @@ import { Button } from "@/component/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Toast } from "@/component/ui/Toast";
+import { useSession } from "next-auth/react";
 
 export default function Page() {
+  const { data: session, status }:any = useSession();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -22,6 +24,14 @@ export default function Page() {
   const [error, setError] = useState("");
 
   const router = useRouter();
+
+  // Redirect seller if already logged in
+  useEffect(() => {
+    if (status === "loading") return;
+    if (session?.user?.role === "seller") {
+      router.replace("/seller");
+    }
+  }, [session, status, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({

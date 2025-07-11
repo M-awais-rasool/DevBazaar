@@ -12,10 +12,26 @@ import { HowItWorksSection } from "@/component/landingPage/HowItWorksSection";
 import { PricingSection } from "@/component/landingPage/PricingSection";
 import { StartSellingSection } from "@/component/landingPage/StartSellingSection";
 import Footer from "@/component/footer/Footer";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const Index = () => {
+  const { data: session, status }:any = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session?.user?.role === "seller") {
+      router.replace("/seller");
+    }
+  }, [session, status, router]);
+
+  if (status === "loading" || session?.user?.role === "seller") {
+    return null;
+  }
+
   return (
-    <div className="min-h-screen bg-black text-foreground">
+    <div className="min-h-screen bg-black text-foreground flex flex-col items-center justify-center">
       <Navigation />
 
       {/* Hero Section */}
@@ -82,7 +98,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="relative mx-auto max-w-5xl mt-20"
+          className="relative mx-auto max-w-5xl mt-20 flex justify-center"
         >
           <div className="glass rounded-xl overflow-hidden aspect-square w-full md:w-4/4 lg:w-3/4 mx-auto">
             <div className="relative w-full h-full">
@@ -102,36 +118,31 @@ const Index = () => {
       <LogoCarousel />
 
       {/* Features Section */}
-      <div id="features" className="bg-black">
+      <div id="features" className="bg-black flex flex-col items-center">
         {/* <FeaturesSection /> */}
       </div>
 
       {/* Popular Toolkits Showcase */}
-      <div className="bg-black">
+      <div className="bg-black flex flex-col items-center">
         <ToolkitsShowcase />
       </div>
 
       {/* How It Works Section */}
-      <div className="bg-black">
+      <div className="bg-black flex flex-col items-center">
         <HowItWorksSection />
       </div>
 
       {/* Start Selling Section */}
-      <div className="bg-black">
+      <div className="bg-black flex flex-col items-center">
         <StartSellingSection />
       </div>
 
       {/* Pricing Section */}
-      <div id="pricing" className="bg-black">
+      <div id="pricing" className="bg-black flex flex-col items-center">
         <PricingSection />
       </div>
 
-      {/* <div className="bg-black">
-        <TestimonialsSection />
-      </div> */}
-
-      {/* CTA Section */}
-      <section className="container px-4 py-20 relative bg-black">
+      <section className="container px-4 py-20 relative bg-black ">
         <div
           className="absolute inset-0 opacity-40"
           style={{
@@ -152,7 +163,7 @@ const Index = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join thousands of developers who have already accelerated their development with our toolkit marketplace.
           </p>
-          <Button size="lg" className="button-gradient">
+          <Button size="lg" className="button-gradient" onClick={() => router.push('/login')}>
             Get Started
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
@@ -160,7 +171,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <div className="bg-black">
+      <div className="bg-black flex flex-col items-center">
         <Footer />
       </div>
     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Search, ShoppingCart, Code } from "lucide-react";
 
@@ -24,9 +25,6 @@ const Step = ({
   >
     <div className="mb-6">
       <div className="relative mx-auto w-24 h-24 glass glass-hover rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-        <span className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-sm font-bold">
-          {number}
-        </span>
         <div className="text-primary">
           {icon}
         </div>

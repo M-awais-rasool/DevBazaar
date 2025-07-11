@@ -43,10 +43,9 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: "Toolkits", href: "#toolkits", onClick: () => scrollToSection('features') },
-    { name: "Pricing", href: "#pricing", onClick: () => scrollToSection('pricing') },
-    { name: "Sell Toolkit", href: "#sell", onClick: () => scrollToSection('testimonials') },
-    { name: "Login", href: "/login", onClick: () => router.push("/login") },
+    { name: "Toolkits", href: "/viewAll", onClick: () => router.push("/viewAll") },
+    { name: "Blogs", href: "/blogs", onClick: () => router.push("/blogs") },
+    { name: "About", href: "/about", onClick: () => router.push("/about") },
   ];
 
   return (
@@ -61,7 +60,7 @@ const Navigation = () => {
         <nav className="flex items-center justify-between h-full">
           <div className="flex items-center gap-2">
             <Command className="w-5 h-5 text-primary" />
-            <span className="font-bold text-base">DevSaaS</span>
+            <span className="font-bold text-base">DevBazaar</span>
           </div>
 
           <div className="hidden md:flex items-center gap-6">
@@ -81,11 +80,11 @@ const Navigation = () => {
               </a>
             ))}
             <Button 
-              onClick={() => scrollToSection('cta')}
+              onClick={() => router.push("/login")}
               size="sm"
               className="button-gradient"
             >
-              Get Started
+             Became a Seller
             </Button>
           </div>
 
@@ -121,7 +120,7 @@ const Navigation = () => {
                     }}
                     className="button-gradient mt-4"
                   >
-                    Get Started
+                    Get Started Free
                   </Button>
                 </div>
               </SheetContent>
