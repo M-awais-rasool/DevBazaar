@@ -17,16 +17,18 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const Index = () => {
-  const { data: session, status }:any = useSession();
+  const { data: session, status }: any = useSession();
   const router = useRouter();
 
   useEffect(() => {
     if (session?.user?.role === "seller") {
       router.replace("/seller");
+    } else if (session?.user?.role === "admin") {
+      router.push("/admin");
     }
   }, [session, status, router]);
 
-  if (status === "loading" || session?.user?.role === "seller") {
+  if (status === "loading" || session?.user?.role === "seller" || session?.user?.role === "admin") {
     return null;
   }
 

@@ -1,27 +1,14 @@
 "use client";
-import { BarChart2, FileText, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const navItems = [
-  {
-    href: '/seller/dashboardAnalytics',
-    icon: <BarChart2 className="w-6 h-6" />, 
-    label: 'Analytics',
-  },
-  {
-    href: '/seller/toolkit',
-    icon: <FileText className="w-6 h-6" />, 
-    label: 'Toolkits',
-  },
-  {
-    href: '/seller/dashboardSettings',
-    icon: <Settings className="w-6 h-6" />, 
-    label: 'Settings',
-  },
-];
+type NavItem = {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+};
 
-export default function BottomNav() {
+export default function BottomNav({ navItems }: { navItems: NavItem[] }) {
   const pathname = usePathname();
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center bg-[#0A0A0A] border-t border-white/10 h-16 md:hidden">

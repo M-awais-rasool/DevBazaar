@@ -1,29 +1,16 @@
 "use client";
-import { BarChart2, FileText, Settings,  } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import LogoutButton from './LogoutButton';
 
-const navItems = [
-  {
-    href: '/seller/dashboardAnalytics',
-    icon: <BarChart2 className="w-6 h-6" />, 
-    tooltip: 'Analytics',
-  },
-  {
-    href: '/seller/toolkit',
-    icon: <FileText className="w-6 h-6" />,
-    tooltip: 'Toolkits',
-  },
-  {
-    href: '/seller/dashboardSettings',
-    icon: <Settings className="w-6 h-6" />,
-    tooltip: 'Settings',
-  },
-];
+type NavItem = {
+  href: string;
+  icon: React.ReactNode;
+  tooltip: string;
+};
 
-function SideBar() {
+function SideBar({ navItems }: { navItems: NavItem[] }) {
   const pathname = usePathname();
   return (
     <aside className="hidden md:flex w-24 bg-[#0A0A0A] flex-col items-center py-8 relative border-r border-white/10 min-h-screen">

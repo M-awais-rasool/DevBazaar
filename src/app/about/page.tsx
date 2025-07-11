@@ -3,7 +3,9 @@ import Navigation from "@/component/landingPage/Navigation";
 import Footer from "@/component/footer/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 const aboutImages = [
     "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
@@ -21,6 +23,21 @@ const stagger = {
 };
 
 export default function AboutPage() {
+    const { data: session, status }: any = useSession();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (session?.user?.role === "seller") {
+            router.replace("/seller");
+        } else if (session?.user?.role === "admin") {
+            router.push("/admin");
+        }
+    }, [session, status, router]);
+
+    if (status === "loading" || session?.user?.role === "seller" || session?.user?.role === "admin") {
+        return null;
+    }
+
     return (
         <div className="min-h-screen flex flex-col bg-black">
             <Navigation />

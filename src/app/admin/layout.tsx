@@ -1,16 +1,16 @@
 "use client";
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBar from "@/component/sideBar/SideBar";
 import BottomNav from "@/component/sideBar/BottomNav";
-import { BarChart2, FileText, Settings } from 'lucide-react';
+import { FileText, BarChart2 } from 'lucide-react';
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 
-function layout({ children }: { children: ReactNode }) {
+function layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { data: session, status }: any = useSession();
-  const [isSeller, setIsSeller] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -18,8 +18,8 @@ function layout({ children }: { children: ReactNode }) {
       return;
     }
     if (status === "authenticated") {
-      if (session?.user?.role !== "seller") {
-        setIsSeller(false);
+      if (session?.user?.role !== "admin") {
+        setIsAdmin(false);
         return;
       }
     }
@@ -29,7 +29,7 @@ function layout({ children }: { children: ReactNode }) {
     return null;
   }
 
-  if (!isSeller) {
+  if (!isAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
         <div className="text-center">
@@ -41,34 +41,28 @@ function layout({ children }: { children: ReactNode }) {
     );
   }
 
-  const sellerNavItems = [
+  const adminNavItems = [
     {
-      href: '/seller/dashboardAnalytics',
+      href: '/admin/ViewAllSellers',
       icon: <BarChart2 className="w-6 h-6" />, 
-      tooltip: 'Analytics',
-      label: 'Analytics',
+      tooltip: 'View All Sellers',
+      label: 'View Sellers',
     },
     {
-      href: '/seller/toolkit',
+      href: '/admin/blogs',
       icon: <FileText className="w-6 h-6" />, 
-      tooltip: 'Toolkits',
-      label: 'Toolkits',
-    },
-    {
-      href: '/seller/dashboardSettings',
-      icon: <Settings className="w-6 h-6" />, 
-      tooltip: 'Settings',
-      label: 'Settings',
+      tooltip: 'Add Blogs',
+      label: 'Add Blogs',
     },
   ];
 
   return (
     <div className="min-h-screen flex bg-[#090909] text-white">
-      <SideBar navItems={sellerNavItems} />
+      <SideBar navItems={adminNavItems} />
       <main className="flex-1 bg-[#090909] overflow-y-auto">
         {children}
       </main>
-      <BottomNav navItems={sellerNavItems} />
+      <BottomNav navItems={adminNavItems} />
     </div>
   )
 }

@@ -5,6 +5,7 @@ const ToolkitSchema = new mongoose.Schema(
     _id: {
       type: String,
       required: true,
+       default: () => new mongoose.Types.ObjectId().toString()
     },
     userId: { type: String, required: true },
     name: { type: String, required: true },

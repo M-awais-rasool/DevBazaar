@@ -1,5 +1,4 @@
 "use client";
-
 import { signIn } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -11,13 +10,13 @@ import { Toast } from "@/component/ui/Toast";
 import { useSession } from "next-auth/react";
 
 export default function Page() {
-  const { data: session, status }:any = useSession();
+  const { data: session, status }: any = useSession();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    role: "buyer",
+    role: "seller",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -25,11 +24,13 @@ export default function Page() {
 
   const router = useRouter();
 
-  // Redirect seller if already logged in
   useEffect(() => {
     if (status === "loading") return;
     if (session?.user?.role === "seller") {
       router.replace("/seller");
+    }
+    else if (session?.user?.role === "admin") {
+      router.push("/admin");
     }
   }, [session, status, router]);
 
@@ -60,7 +61,12 @@ export default function Page() {
             setError("Invalid email or password.");
           }
         } else {
-          router.push("/seller");
+          if (session?.user?.role === "admin") {
+            router.push("/admin");
+          }
+          else if (session?.user?.role === "seller") {
+            router.push("/seller");
+          }
         }
       } else {
         const response = await fetch("/api/auth/signup", {
@@ -85,7 +91,7 @@ export default function Page() {
             icon: "swal2-icon-food",
           },
         });
-        setIsLogin(true); 
+        setIsLogin(true);
         if (!response.ok) {
           setError(data.message || "Something went wrong. Please try again.");
         }
@@ -222,7 +228,6 @@ export default function Page() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23C660] focus:border-transparent text-white"
                   >
-                    <option value="buyer">Buyer - Buy developer tools</option>
                     <option value="seller">Seller - Sell your tools</option>
                   </select>
                 </motion.div>
