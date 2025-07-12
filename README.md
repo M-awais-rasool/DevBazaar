@@ -13,7 +13,6 @@ DevBazaar is a marketplace platform for buying and selling developer toolkits, r
 - Filtering and searching toolkits
 - Responsive UI with modern design
 
-
 ## Images
 <img width="1662" height="848" alt="Image" src="https://github.com/user-attachments/assets/d13c8475-7acd-4823-892a-2522285fd708" />
 <img width="1666" height="857" alt="Image" src="https://github.com/user-attachments/assets/266fbfbc-296a-47bc-9114-4627e7129e8d" />
