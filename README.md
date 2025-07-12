@@ -15,11 +15,13 @@ DevBazaar is a marketplace platform for buying and selling developer toolkits, r
 
 
 ## Images
-
-Add screenshots or GIFs of your project here to showcase the UI and features. For example:
-
-![Home Page](public/banner.png)
-![Toolkit Detail](public/file.svg)
+<img width="1662" height="848" alt="Image" src="https://github.com/user-attachments/assets/d13c8475-7acd-4823-892a-2522285fd708" />
+<img width="1666" height="857" alt="Image" src="https://github.com/user-attachments/assets/266fbfbc-296a-47bc-9114-4627e7129e8d" />
+<img width="1654" height="851" alt="Image" src="https://github.com/user-attachments/assets/46a310fb-b069-4c1b-9042-70a720efa7aa" />
+<img width="1676" height="852" alt="Image" src="https://github.com/user-attachments/assets/82b3cf5b-890d-4ab7-b05b-2e21555fb2c8" />
+<img width="1656" height="855" alt="Image" src="https://github.com/user-attachments/assets/227f53e4-a7b8-4bc2-9f63-4c17aec29291" />
+<img width="1649" height="863" alt="Image" src="https://github.com/user-attachments/assets/a595e87d-ba35-4d9b-8c55-6f41aba23e2d" />
+<img width="1666" height="853" alt="Image" src="https://github.com/user-attachments/assets/2d56155f-ccc8-40fa-ae7b-03d6adda6bb8" />
 
 ## Getting Started
 
