@@ -238,23 +238,6 @@ export default function Page() {
               )}
             </div>
 
-            {isLogin && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="flex items-center justify-between"
-              >
-                <label className="flex items-center gap-2 text-sm text-gray-400">
-                  <input type="checkbox" className="rounded border-white/10 bg-white/5" />
-                  Remember me
-                </label>
-                <Link href="/forgot-password" className="text-sm text-[#23C660] hover:underline">
-                  Forgot password?
-                </Link>
-              </motion.div>
-            )}
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
