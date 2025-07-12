@@ -20,7 +20,38 @@ interface Blog {
 const BlogsPage = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
   const router = useRouter();
+  const handleDeleteClick = (blog: Blog) => {
+    setSelectedBlog(blog);
+    setShowConfirm(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!selectedBlog) return;
+    setDeletingId(selectedBlog._id);
+    try {
+      const res = await fetch(`/api/blogs?id=${selectedBlog._id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        setBlogs((prev) => prev.filter((b) => b._id !== selectedBlog._id));
+      }
+    } catch (err) {
+      // Optionally handle error
+    } finally {
+      setDeletingId(null);
+      setShowConfirm(false);
+      setSelectedBlog(null);
+    }
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirm(false);
+    setSelectedBlog(null);
+  };
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -97,8 +128,19 @@ const BlogsPage = () => {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
-              className="bg-[#101010] rounded-2xl shadow-lg overflow-hidden flex flex-col hover:scale-[1.025] hover:shadow-2xl transition-all duration-300 border border-white/10"
+              className="bg-[#101010] rounded-2xl shadow-lg overflow-hidden flex flex-col hover:scale-[1.025] hover:shadow-2xl transition-all duration-300 border border-white/10 relative"
             >
+              {/* Delete Icon Button */}
+              <button
+                className="absolute top-3 right-3 z-10 bg-black/60 hover:bg-red-600/80 text-white rounded-full p-2 transition-colors"
+                title="Delete Blog"
+                onClick={() => handleDeleteClick(blog)}
+                disabled={deletingId === blog._id}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
               <div className="relative w-full h-56 bg-[#181818]">
                 <Image
                   src={blog.imageUrl}
@@ -137,7 +179,32 @@ const BlogsPage = () => {
           ))}
         </motion.div>
       )}
-    </div>
+    {/* Confirm Delete Modal */}
+    {showConfirm && selectedBlog && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+        <div className="bg-[#181818] rounded-xl p-8 shadow-2xl w-full max-w-sm text-center">
+          <h3 className="text-xl font-semibold mb-4 text-white">Delete Blog</h3>
+          <p className="mb-6 text-gray-300">Are you sure you want to delete <span className="font-bold">{selectedBlog.title}</span>?</p>
+          <div className="flex justify-center gap-4">
+            <button
+              className="px-5 py-2 rounded-lg bg-gray-600 hover:bg-gray-700 text-white"
+              onClick={handleCancelDelete}
+              disabled={deletingId === selectedBlog._id}
+            >
+              Cancel
+            </button>
+            <button
+              className="px-5 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white"
+              onClick={handleConfirmDelete}
+              disabled={deletingId === selectedBlog._id}
+            >
+              {deletingId === selectedBlog._id ? 'Deleting...' : 'Delete'}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
   );
 };
 

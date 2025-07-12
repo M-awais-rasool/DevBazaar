@@ -10,7 +10,6 @@ function buildFilter(params) {
     if (params.techStack) filter.techStack = params.techStack;
     if (params.userId) filter.userId = params.userId;
     if (params.tags) filter.tags = { $regex: params.tags, $options: 'i' };
-    if (params.price) filter.price = params.price;
     // Add more filters as needed
     return filter;
 }

@@ -104,7 +104,6 @@ export async function POST(webRequest) {
             description: getField(fields.description),
             shortDescription: getField(fields.shortDescription),
             tags: getField(fields.tags),
-            price: getField(fields.price),
             category: getField(fields.category),
             techStack: getField(fields.techStack),
             demoUrl: getField(fields.demoUrl),

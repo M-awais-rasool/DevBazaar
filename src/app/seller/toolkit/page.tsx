@@ -112,9 +112,6 @@ export default function ToolkitListPage() {
                                                     ))}
                                                 </div>
                                                 <div className="flex items-center justify-between mt-4">
-                                                    <span className="text-xl font-bold text-primary drop-shadow">
-                                                        ${toolkit.price}
-                                                    </span>
                                                     <Button
                                                         size="sm"
                                                         variant="outline"

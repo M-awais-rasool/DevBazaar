@@ -65,3 +65,22 @@ export async function GET() {
         return NextResponse.json({ error: error.message || 'Server error' }, { status: 500 });
     }
 }
+
+export async function DELETE(req) {
+    try {
+        await connectMongo();
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get('id');
+        if (!id) {
+            return NextResponse.json({ error: 'Missing blog id' }, { status: 400 });
+        }
+        const deleted = await Blog.findByIdAndDelete(id);
+        if (!deleted) {
+            return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+        }
+        return NextResponse.json({ message: 'Blog deleted' }, { status: 200 });
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: error.message || 'Server error' }, { status: 500 });
+    }
+}

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import SideBar from "@/component/sideBar/SideBar";
 import BottomNav from "@/component/sideBar/BottomNav";
-import { FileText, BarChart2 } from 'lucide-react';
+import { FileText, BarChart2, Users, PlusSquare } from 'lucide-react';
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
@@ -43,14 +43,14 @@ function layout({ children }: { children: React.ReactNode }) {
 
   const adminNavItems = [
     {
-      href: '/admin/ViewAllSellers',
-      icon: <BarChart2 className="w-6 h-6" />, 
+      href: '/admin/allSeller',
+      icon: <Users className="w-6 h-6" />, 
       tooltip: 'View All Sellers',
       label: 'View Sellers',
     },
     {
       href: '/admin/blogs',
-      icon: <FileText className="w-6 h-6" />, 
+      icon: <PlusSquare className="w-6 h-6" />, 
       tooltip: 'Add Blogs',
       label: 'Add Blogs',
     },

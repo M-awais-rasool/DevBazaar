@@ -87,10 +87,10 @@ const Index = () => {
             transition={{ delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 items-start"
           >
-            <Button size="lg" className="button-gradient">
+            <Button size="lg" className="button-gradient" onClick={() => router.push('/viewAll')}>
               Explore Toolkits
             </Button>
-            <Button size="lg" variant="link" className="text-white">
+            <Button size="lg" variant="link" className="text-white" onClick={() => router.push('/login')}>
               Sell Yours <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </motion.div>

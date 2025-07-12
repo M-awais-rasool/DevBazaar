@@ -54,10 +54,9 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({ form, handleChange, catego
         </select>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <div>
+        {/* <div>
           <label className="block mb-2 font-medium text-white/90">Price (USD) *</label>
           <div className="relative">
-            {/* DollarSign icon is rendered in parent */}
             <input
               type="number"
               name="price"
@@ -69,7 +68,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({ form, handleChange, catego
               placeholder="49"
             />
           </div>
-        </div>
+        </div> */}
         <div>
           <label className="block mb-2 font-medium text-white/90">Version</label>
           <input

@@ -33,7 +33,6 @@ function FilterBar({ onFilter }: { onFilter: (filters: any) => void }) {
 	const [category, setCategory] = useState("All");
 	const [techStack, setTechStack] = useState("All");
 	const [tags, setTags] = useState("");
-	const [price, setPrice] = useState("");
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -42,7 +41,6 @@ function FilterBar({ onFilter }: { onFilter: (filters: any) => void }) {
 			category: category === "All" ? undefined : category,
 			techStack: techStack === "All" ? undefined : techStack,
 			tags,
-			price: price || undefined,
 		});
 	};
 
@@ -99,7 +97,7 @@ function FilterBar({ onFilter }: { onFilter: (filters: any) => void }) {
 					className="w-full px-3 py-2 rounded-lg bg-background border border-white/10 focus:border-primary outline-none transition"
 				/>
 			</div>
-			<div className="flex-1 min-w-[100px]">
+			{/* <div className="flex-1 min-w-[100px]">
 				<label className="block text-sm text-gray-400 mb-1">Price</label>
 				<input
 					type="text"
@@ -108,7 +106,7 @@ function FilterBar({ onFilter }: { onFilter: (filters: any) => void }) {
 					placeholder="e.g. 0, 10, 20"
 					className="w-full px-3 py-2 rounded-lg bg-background border border-white/10 focus:border-primary outline-none transition"
 				/>
-			</div>
+			</div> */}
 			<Button
 				type="submit"
 				size="lg"

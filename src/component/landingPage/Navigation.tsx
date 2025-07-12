@@ -58,10 +58,13 @@ const Navigation = () => {
     >
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
-          <div className="flex items-center gap-2">
+            <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => router.push("/")}
+            >
             <Command className="w-5 h-5 text-primary" />
             <span className="font-bold text-base">DevBazaar</span>
-          </div>
+            </div>
 
           <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
@@ -74,9 +77,13 @@ const Navigation = () => {
                     item.onClick();
                   }
                 }}
-                className="text-sm text-muted-foreground hover:text-[#23C660] transition-all duration-300 relative group"
+                className="text-sm text-muted-foreground hover:text-[#23C660] transition-all duration-300 relative group overflow-hidden"
               >
-                {item.name}
+                <span className="relative z-10">{item.name}</span>
+                <span
+                  className="absolute left-0 bottom-0 w-full h-0.5 bg-[#23C660] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"
+                  aria-hidden="true"
+                />
               </a>
             ))}
             <Button 
@@ -101,7 +108,7 @@ const Navigation = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="text-lg text-muted-foreground hover:text-[#23C660] transition-all duration-300 relative group py-2 px-3 rounded-md"
+                      className="text-lg text-muted-foreground hover:text-[#23C660] transition-all duration-300 relative group py-2 px-3 rounded-md overflow-hidden"
                       onClick={(e) => {
                         e.preventDefault();
                         setIsMobileMenuOpen(false);
@@ -110,7 +117,11 @@ const Navigation = () => {
                         }
                       }}
                     >
-                      {item.name}
+                      <span className="relative z-10">{item.name}</span>
+                      <span
+                        className="absolute left-0 bottom-0 w-full h-0.5 bg-[#23C660] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"
+                        aria-hidden="true"
+                      />
                     </a>
                   ))}
                   <Button 

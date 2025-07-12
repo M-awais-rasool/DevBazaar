@@ -3,11 +3,14 @@
 import { motion } from "framer-motion";
 import { Users, Gift, Globe, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 export const StartSellingSection = () => {
+  const router = useRouter();
+
   const benefits = [
     {
-      icon: <Gift className="w-6 h-6" />, 
+      icon: <Gift className="w-6 h-6" />,
       title: "Share Your Toolkit",
       description: "Help fellow developers by sharing your best solutions for free."
     },
@@ -65,7 +68,7 @@ export const StartSellingSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
             >
-              <Button size="lg" className="button-gradient">
+              <Button size="lg" className="button-gradient" onClick={() => router.push('/login')}>
                 Share Your Toolkit
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>

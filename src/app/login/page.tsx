@@ -34,6 +34,10 @@ export default function Page() {
     }
   }, [session, status, router]);
 
+  if (status === "loading") {
+    return null;
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,

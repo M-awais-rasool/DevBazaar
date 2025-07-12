@@ -43,22 +43,10 @@ function layout({ children }: { children: ReactNode }) {
 
   const sellerNavItems = [
     {
-      href: '/seller/dashboardAnalytics',
-      icon: <BarChart2 className="w-6 h-6" />, 
-      tooltip: 'Analytics',
-      label: 'Analytics',
-    },
-    {
       href: '/seller/toolkit',
-      icon: <FileText className="w-6 h-6" />, 
+      icon: <FileText className="w-6 h-6" />,
       tooltip: 'Toolkits',
       label: 'Toolkits',
-    },
-    {
-      href: '/seller/dashboardSettings',
-      icon: <Settings className="w-6 h-6" />, 
-      tooltip: 'Settings',
-      label: 'Settings',
     },
   ];
 

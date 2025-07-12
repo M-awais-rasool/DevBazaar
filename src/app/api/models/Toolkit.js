@@ -12,7 +12,6 @@ const ToolkitSchema = new mongoose.Schema(
     description: { type: String, required: true },
     shortDescription: { type: String },
     tags: { type: String },
-    price: { type: String },
     category: { type: String },
     techStack: { type: String },
     demoUrl: { type: String },

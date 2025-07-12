@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, } from "lucide-react";
 import { Button } from "@/component/ui/button";
 import { Stepper } from "../../../../component/addToolkit/Stepper";
@@ -13,6 +14,7 @@ import { ImagePreview } from "../../../../component/addToolkit/ImagePreview";
 import { UploadingScreen } from "../../../../component/addToolkit/UploadingScreen";
 
 export default function AddToolkitPage() {
+  const router = useRouter();
   const [form, setForm] = useState<{
     name: string;
     description: string;
@@ -180,8 +182,7 @@ export default function AddToolkitPage() {
   };
 
   const goBack = () => {
-    // Navigate back logic
-    console.log("Going back...");
+    router.back();
   };
 
   const nextStep = () => {
