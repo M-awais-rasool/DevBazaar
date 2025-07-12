@@ -3,7 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import connectMongo from '@/lib/mongodb';
 import User from '../../models/User';
 
-export const authOptions = {
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
