@@ -1,8 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# DevBazaar
+
+DevBazaar is a marketplace platform for buying and selling developer toolkits, resources, and blogs. Built with Next.js, it features authentication, admin and seller dashboards, toolkit uploads, blog management, and more.
+
+## Features
+
+- User authentication (sign up, login, NextAuth)
+- Admin dashboard for managing sellers, blogs, and toolkits
+- Seller dashboard for uploading and managing toolkits
+- Blog creation and management
+- Toolkit detail pages with file/image uploads
+- Filtering and searching toolkits
+- Responsive UI with modern design
+
+
+## Images
+
+Add screenshots or GIFs of your project here to showcase the UI and features. For example:
+
+![Home Page](public/banner.png)
+![Toolkit Detail](public/file.svg)
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 2. Set up environment variables
+
+Create a `.env.local` file in the root directory and add the following variables:
+
+```env
+# MongoDB connection string
+MONGODB_URI=your_mongodb_connection_string
+
+# NextAuth secret and providers
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# AWS S3 (if using file uploads)
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+AWS_REGION=your_aws_region
+AWS_BUCKET_NAME=your_bucket_name
+```
+
+> **Note:** Only add the AWS variables if you plan to use AWS S3 for file uploads.
+
+### 3. Run the development server
 
 ```bash
 npm run dev
@@ -16,21 +66,11 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/` - Main app routes and pages
+- `src/component/` - Reusable UI and feature components
+- `src/lib/` - Utility and config files (e.g., MongoDB, AWS)
+- `src/api/` - API route handlers (auth, blogs, toolkits, etc.)
