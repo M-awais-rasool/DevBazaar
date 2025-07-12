@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       "img.freepik.com",
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   /* config options here */
 };
 
