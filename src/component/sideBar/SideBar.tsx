@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import LogoutButton from './LogoutButton';
+import { Command } from 'lucide-react';
 
 type NavItem = {
   href: string;
@@ -15,13 +16,9 @@ function SideBar({ navItems }: { navItems: NavItem[] }) {
   return (
     <aside className="hidden md:flex w-24 bg-[#0A0A0A] flex-col items-center py-8 relative border-r border-white/10 min-h-screen">
       <div className="mb-12 flex flex-col items-center">
-        <span className="text-4xl font-bold tracking-tight flex items-center gap-2">
-          <span className="inline-block w-8 h-8 bg-white rounded-full flex items-center justify-center">
-            <span className="text-black font-bold text-2xl">P</span>
-          </span>
-        </span>
-        <span className="w-2 h-2 bg-green-400 rounded-full mt-1" />
+        <Command className="w-5 h-5 text-primary" />
       </div>
+
       <nav className="flex flex-col gap-6 mt-4">
         {navItems.map((item) => (
           <SidebarButton

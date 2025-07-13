@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 const LogoCarousel = () => {
   const logos = [
-    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=80&q=80", 
-    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=80&q=80", 
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=80&q=80", 
-    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=80&q=80", 
-    "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=80&q=80", 
+    "https://bcassetcdn.com/public/blog/wp-content/uploads/2021/10/07203359/australia-tech-map-by-jimjemr-brandcrowd.png", 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaHeVTRR3vAPXTcFBP3r9rIt1cnhoRMPWVCw&s", 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIZ2OOdPyFJiQrZTGd8-DB40rzLYH4Au6kxQ&s", 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8L9PmGM901rpsQ3VVzfXVJM4TBD65cJgl6g&s", 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp0jXPF4B7OArsgO6BBr58cBie5SmX92kHtw&s", 
   ];
 
   const extendedLogos = [...logos, ...logos, ...logos];
