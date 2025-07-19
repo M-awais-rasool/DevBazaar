@@ -192,25 +192,35 @@ export default function ToolkitDetailPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex gap-4 mt-4"
+              className="flex flex-wrap gap-4 mt-4 w-full"
             >
               {toolkit.demoUrl && (
-                <a href={toolkit.demoUrl} target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="button-gradient shadow-xl hover:scale-105 transition-transform duration-300">
+                <a href={toolkit.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[140px]">
+                  <Button
+                    size="lg"
+                    className="button-gradient shadow-xl hover:scale-105 transition-transform duration-300 w-full"
+                  >
                     Live Demo <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </a>
               )}
               {toolkit.githubUrl && (
-                <a href={toolkit.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 hover:scale-105 transition-transform duration-300">
+                <a href={toolkit.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[140px]">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white/20 text-white hover:bg-white/10 hover:scale-105 transition-transform duration-300 w-full"
+                  >
                     GitHub
                   </Button>
                 </a>
               )}
               {toolkit.zipUrl && (
-                <a href={toolkit.zipUrl} target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="bg-gray-800 text-white hover:bg-gray-700 hover:scale-105 transition-transform duration-300">
+                <a href={toolkit.zipUrl} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[140px]">
+                  <Button
+                    size="lg"
+                    className="bg-gray-800 text-white hover:bg-gray-700 hover:scale-105 transition-transform duration-300 w-full"
+                  >
                     Download
                   </Button>
                 </a>
